@@ -13,14 +13,10 @@ get_header(); ?>
         <div class="row">
 
             <div class="col-lg-12">
-                <h1 class="page-header">404
+                <h1 class="page-header"><?php the_title(); ?>
                     <small>Page Not Found</small>
                 </h1>
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
-                    </li>
-                    <li class="active">404</li>
-                </ol>
+ <?php the_breadcrumb(); ?>
             </div>
 
         </div>

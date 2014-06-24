@@ -9,10 +9,7 @@ get_header();
       
         <div class="col-lg-12">
           <h1 class="page-header">Contact <small>We'd Love to Hear From You!</small></h1>
-          <ol class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li class="active">Contact</li>
-          </ol>
+ <?php the_breadcrumb(); ?>
         </div>
         
         <div class="col-lg-12">

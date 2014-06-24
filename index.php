@@ -13,36 +13,72 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<div class="container">
+
+	<div class="row">
+
+
+		<div class="col-lg-12">
+			<h1 class="page-header"><?php the_title( ); ?>
+				<small>Blog Homepage</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="index.html">Home</a>
+				</li>
+				<li class="active">Blog Home 1</li>
+			</ol>
+		</div>
+
+	</div> 
+
+	<div class="row">
 
 		<?php if ( have_posts() ) : ?>
+		
+		<?php /* Start the Loop */ ?>
 
-			<?php /* Start the Loop */ ?>
+		<?php if ( of_get_option('blog_layout') == "one"): ?>
+		<div class="col-lg-8">
 			<?php while ( have_posts() ) : the_post(); ?>
+			<?php get_template_part( 'inc/content', 'blog-1' ); ?>
+		<?php endwhile; ?>
 
-				<?php if ( of_get_option('blog_layout') == "one"): ?>
+		<?php ammarath_paging_nav(); ?>
+	</div> <!-- COL8 -->
+	
+	<div class="col-lg-3 col-lg-offset-1">
+		<?php get_sidebar(); ?>
+	</div>
+	
+	
+<?php else: ?>
+	<div class="col-lg-12">
+		<?php while ( have_posts() ) : the_post(); ?>
+		<?php get_template_part( 'inc/content', 'blog-2' ); ?>
+	<?php endwhile; ?>
 
-				<?php get_template_part( 'inc/content', 'blog-1' ); ?>
+	<?php ammarath_paging_nav(); ?>
+</div> <!-- COL12 -->
 
-			<?php else: ?>
+<?php endif; ?>
 
-			<?php get_template_part( 'inc/content', 'blog-2' ); ?>
 
-		<?php endif; ?>
 
-			<?php endwhile; ?>
 
-			<?php ammarath_paging_nav(); ?>
+<?php else : ?>
 
-		<?php else : ?>
+	<?php get_template_part( 'content', 'none' ); ?>
 
-			<?php get_template_part( 'content', 'none' ); ?>
+<?php endif; ?>
 
-		<?php endif; ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
 
-<?php //get_sidebar(); ?>
+
+</div> <!-- ROW -->
+
+
+</main><!-- #main -->
+</div><!-- #primary -->
+
+
 <?php get_footer(); ?>

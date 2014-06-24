@@ -21,3 +21,13 @@ Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
 along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 and Blueprint http://www.blueprintcss.org/
 */
+
+img.attachment-single-post.wp-post-image {
+max-width: 100%;
+height: auto;
+display: block;
+}
+
+ul.nav li.dropdown:hover ul.dropdown-menu { 
+display: block !important; 
+}

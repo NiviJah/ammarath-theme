@@ -12,6 +12,11 @@
 
 show_admin_bar( false );
 
+
+
+add_theme_support( 'post-thumbnails' ); 
+
+
 /**
 * Add Resposive Class to Images
 */
@@ -24,6 +29,61 @@ function add_image_responsive_class($content) {
 }
 add_filter('the_content', 'add_image_responsive_class');
 
+
+add_image_size( 'single-post', 1200, 9999 ); //300 pixels wide (and unlimited height)
+
+
+/*
+* ADD BREADCRUMBS
+**/
+function the_breadcrumb() {
+    global $post;
+    echo '<ol class="breadcrumb">';
+    if (!is_home()) {
+        echo '<li><a href="';
+        echo get_option('home');
+        echo '">';
+        echo 'Home';
+        echo '</a></li>';
+        if (is_category() || is_single()) {
+            echo '<li>';
+            the_category(' </li><li> ');
+            if (is_single()) {
+                echo '</li><li>';
+                the_title();
+                echo '</li>';
+            }
+        } elseif (is_page()) {
+            if($post->post_parent){
+                $anc = get_post_ancestors( $post->ID );
+                $title = get_the_title();
+                foreach ( $anc as $ancestor ) {
+                    $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li>';
+                }
+                echo $output;
+                echo '<strong title="'.$title.'"> '.$title.'</strong>';
+            } else {
+                echo '<li><strong> '.get_the_title().'</strong></li>';
+            }
+        }
+    }
+    elseif (is_tag()) {single_tag_title();}
+    elseif (is_day()) {echo"<li>Archive for "; the_time('F jS, Y'); echo'</li>';}
+    elseif (is_month()) {echo"<li>Archive for "; the_time('F, Y'); echo'</li>';}
+    elseif (is_year()) {echo"<li>Archive for "; the_time('Y'); echo'</li>';}
+    elseif (is_author()) {echo"<li>Author Archive"; echo'</li>';}
+    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
+    elseif (is_search()) {echo"<li>Search Results"; echo'</li>';}
+    echo '</ol>';
+}
+
+
+
+// function custom_admin_js() {
+//     $url = get_bloginfo('template_directory') . '/js/admin-dynamic-inputs.js';
+//     echo '"<script type="text/javascript" src="'. $url . '"></script>"';
+// }
+// add_action('admin_footer', 'custom_admin_js');
 
 define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/admin/' );
 require_once dirname( __FILE__ ) . '/admin/options-framework.php';
@@ -82,7 +142,7 @@ function ammarath_setup() {
 	 * See http://codex.wordpress.org/Post_Formats
 	 */
 	add_theme_support( 'post-formats', array(
-		'aside', 'image', 'video', 'quote', 'link'
+		'aside', 'image', 'video', 'quote', 'link','audio'
 	) );
 
 	// Setup the WordPress core custom background feature.
@@ -119,11 +179,14 @@ function ammarath_scripts() {
 	wp_enqueue_style( 'ammarath-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'ammarath-custom', get_template_directory_uri().'/css/modern-business.css' );
 	wp_enqueue_style( 'ammarath-bootstrap', get_template_directory_uri().'/css/bootstrap.min.css' );
+	wp_enqueue_style( 'ammarath-flat-ui', get_template_directory_uri().'/css/flat-ui.css' );
 	wp_enqueue_style( 'ammarath-awesome', get_template_directory_uri().'/font-awesome/css/font-awesome.min.css' );
+
 
 	wp_enqueue_script( 'ammarath-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 	wp_enqueue_script( 'ammarath-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20120206', true );
 	wp_enqueue_script( 'ammarath-custom', get_template_directory_uri() . '/js/modern-business.js', array(), '20120206', true );
+	wp_enqueue_script( 'ammarath-hover', get_template_directory_uri() . '/inc/bootstrap-hover-dropdown.min.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'ammarath-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
@@ -159,9 +222,10 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
- * Load Jetpack compatibility file.
+ * Load Post Types file.
  */
 require get_template_directory() . '/inc/post-types.php';
+
 
 /**
  *Register Custom Navigation Walker

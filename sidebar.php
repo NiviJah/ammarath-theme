@@ -5,10 +5,10 @@
  * @package Ammarath
  */
 ?>
-<div class="container">
+
 
         <div class="row">
-            <div class="col-md-3 col-sm-4 sidebar">
+            <div class="sidebar">
                 <ul class="nav nav-stacked nav-pills">
                     <li><a href="index.html">Home</a>
                     </li>
@@ -57,6 +57,3 @@
 
         </div>
         <!-- /.row -->
-
-    </div>
-    <!-- /.container -->

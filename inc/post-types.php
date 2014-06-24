@@ -1,6 +1,6 @@
 <?php
 
-add_theme_support( 'post-thumbnails' ); 
+
 
 // Register Portfolio Post Type
 function Portfolio() {
@@ -45,3 +45,48 @@ function Portfolio() {
 }
 
 add_action( 'init', 'Portfolio', 0 );
+
+
+// Register Questions Post Type
+function Questions() {
+
+	$labels = array(
+		'name'                => _x( 'Questions', 'Post Type General Name', 'ammarath' ),
+		'singular_name'       => _x( 'Question', 'Post Type Singular Name', 'ammarath' ),
+		'menu_name'           => __( 'FAQ', 'ammarath' ),
+		'parent_item_colon'   => __( 'Parent Item:', 'ammarath' ),
+		'all_items'           => __( 'All Questions', 'ammarath' ),
+		'view_item'           => __( 'View Question', 'ammarath' ),
+		'add_new_item'        => __( 'Add New Question', 'ammarath' ),
+		'add_new'             => __( 'Add New', 'ammarath' ),
+		'edit_item'           => __( 'Edit Question', 'ammarath' ),
+		'update_item'         => __( 'Update Question', 'ammarath' ),
+		'search_items'        => __( 'Search Question', 'ammarath' ),
+		'not_found'           => __( 'Not found', 'ammarath' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'ammarath' ),
+	);
+	$args = array(
+		'label'               => __( 'Questions', 'ammarath' ),
+		'description'         => __( 'Questions', 'ammarath' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor'),
+		'taxonomies'          => '',
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-list-view',
+		'can_export'          => false,
+		'has_archive'         => false,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'Questions', $args );
+
+}
+
+add_action( 'init', 'Questions', 0 );

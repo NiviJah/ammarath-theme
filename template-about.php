@@ -8,14 +8,10 @@ get_header( );
         <div class="row">
 
             <div class="col-lg-12">
-                <h1 class="page-header">About
+                <h1 class="page-header"><?php the_title( ); ?>
                     <small>It's Nice to Meet You!</small>
                 </h1>
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
-                    </li>
-                    <li class="active">About</li>
-                </ol>
+ <?php the_breadcrumb(); ?>
             </div>
 
         </div>

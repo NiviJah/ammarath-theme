@@ -7,21 +7,23 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h1 class="page-header"><?php the_title(); ?>
+                    <small>A Sample Blog Post</small>
+                </h1>
+ 				<?php the_breadcrumb(); ?>
+            </div>
+
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'content', 'single' ); ?>
 
-			<?php ammarath_post_nav(); ?>
 
-			<?php
-				// If comments are open or we have at least one comment, load up the comment template
-				if ( comments_open() || '0' != get_comments_number() ) :
-					comments_template();
-				endif;
-			?>
 
 		<?php endwhile; // end of the loop. ?>
 

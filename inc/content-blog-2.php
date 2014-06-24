@@ -1,109 +1,42 @@
 
-    <?php get_header( ); ?>
+<div class="row">
 
-    
-    <div class="container">
+    <div class="col-md-1">
 
-        <div class="row">
+        <?php if( get_post_format() == 'quote' ) : ?>
+        <p><i class="fa fa-quote-left fa-4x"></i>
+        <?php elseif (get_post_format() == 'aside'): ?>
+        <p><i class="fa fa-th-list fa-4x"></i>
+        <?php elseif (get_post_format() == 'image'): ?>
+        <p><i class="fa fa-camera fa-4x"></i>
+        <?php elseif (get_post_format() == 'video'): ?>
+        <p><i class="fa fa-video-camera fa-4x"></i>
+        <?php elseif (get_post_format() == 'link'): ?>
+        <p><i class="fa fa-link fa-4x"></i>
+        <?php elseif (get_post_format() == 'audio'): ?>
+        <p><i class="fa fa-music fa-4x"></i>
+        <?php else: ?>
+        <p><i class="fa fa-file fa-4x"></i>
+        <?php endif; ?>
 
-            <div class="col-lg-12">
-                <h1 class="page-header">Blog Home 2
-                    <small>Blog Homepage</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
-                    </li>
-                    <li class="active">Blog Home 2</li>
-                </ol>
-            </div>
+    </p>
+    <p><?php the_time('F j, Y'); ?></p>
+</div>
+<div class="col-md-5">
+    <a href="<?php the_permalink(); ?> ">
+          <?php the_post_thumbnail(array (600,300), array('class' => 'img-responsive blog_1_img')); ?>
+    </a>
+</div>
+<div class="col-md-6">
+    <h3><a href="<?php the_permalink(); ?> "><?php the_title(); ?></a>
+    </h3>
+    <p>by <a href="#"><?php the_author(); ?></a>
+    </p>
+    <p><?php the_excerpt(); ?></p>
+    <a class="btn btn-primary" href="<?php the_permalink(); ?> ">Read More <i class="fa fa-angle-right"></i></a>
+</div>
 
-        </div>
+</div>
 
-        <div class="row">
+<hr>
 
-            <div class="col-md-1">
-                <p><i class="fa fa-camera fa-4x"></i>
-                </p>
-                <p>May 24, 2013</p>
-            </div>
-            <div class="col-md-5">
-                <a href="blog-post.html">
-                    <img src="http://placehold.it/600x300" class="img-responsive">
-                </a>
-            </div>
-            <div class="col-md-6">
-                <h3><a href="blog-post.html">A Blog Home Template for Bootstrap 3</a>
-                </h3>
-                <p>by <a href="#">Start Bootstrap</a>
-                </p>
-                <p>This is a very basic starter template for a blog homepage. It makes use of Font Awesome icons that are built into the 'Modern Business' template, and it makes use of the Bootstrap 3 pager at the bottom of the page.</p>
-                <a class="btn btn-primary" href="blog-post.html">Read More <i class="fa fa-angle-right"></i></a>
-            </div>
-
-        </div>
-
-        <hr>
-
-        <div class="row">
-
-            <div class="col-md-1">
-                <p><i class="fa fa-film fa-4x"></i>
-                </p>
-                <p>May 24, 2013</p>
-            </div>
-            <div class="col-md-5">
-                <a href="blog-post.html">
-                    <img src="http://placehold.it/600x300" class="img-responsive">
-                </a>
-            </div>
-            <div class="col-md-6">
-                <h3><a href="blog-post.html">A Blog Home Template for Bootstrap 3</a>
-                </h3>
-                <p>by <a href="#">Start Bootstrap</a>
-                </p>
-                <p>This is a very basic starter template for a blog homepage. It makes use of Font Awesome icons that are built into the 'Modern Business' template, and it makes use of the Bootstrap 3 pager at the bottom of the page.</p>
-                <a class="btn btn-primary" href="blog-post.html">Read More <i class="fa fa-angle-right"></i></a>
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="row">
-
-            <div class="col-md-1">
-                <p><i class="fa fa-file-text fa-4x"></i>
-                </p>
-                <p>May 24, 2013</p>
-            </div>
-            <div class="col-md-5">
-                <a href="blog-post.html">
-                    <img src="http://placehold.it/600x300" class="img-responsive">
-                </a>
-            </div>
-            <div class="col-md-6">
-                <h3><a href="blog-post.html">A Blog Home Template for Bootstrap 3</a>
-                </h3>
-                <p>by <a href="#">Start Bootstrap</a>
-                </p>
-                <p>This is a very basic starter template for a blog homepage. It makes use of Font Awesome icons that are built into the 'Modern Business' template, and it makes use of the Bootstrap 3 pager at the bottom of the page.</p>
-                <a class="btn btn-primary" href="blog-post.html">Read More <i class="fa fa-angle-right"></i></a>
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="row">
-
-            <ul class="pager">
-                <li class="previous"><a href="#">&larr; Older</a>
-                </li>
-                <li class="next"><a href="#">Newer &rarr;</a>
-                </li>
-            </ul>
-
-        </div>
-
-    </div>
-    <!-- /.container -->
-
-    <?php get_footer( ); ?>
