@@ -30,7 +30,7 @@ function add_image_responsive_class($content) {
 add_filter('the_content', 'add_image_responsive_class');
 
 
-add_image_size( 'single-post', 1200, 9999 ); //300 pixels wide (and unlimited height)
+add_image_size( 'single-post', 1200, 9999 ); 
 
 
 /*
@@ -79,14 +79,8 @@ function the_breadcrumb() {
 
 
 
-// function custom_admin_js() {
-//     $url = get_bloginfo('template_directory') . '/js/admin-dynamic-inputs.js';
-//     echo '"<script type="text/javascript" src="'. $url . '"></script>"';
-// }
-// add_action('admin_footer', 'custom_admin_js');
-
-define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/admin/' );
-require_once dirname( __FILE__ ) . '/admin/options-framework.php';
+//define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/admin/' );
+//require_once dirname( __FILE__ ) . '/admin/options-framework.php';
 
 
 /**
@@ -196,10 +190,6 @@ function ammarath_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'ammarath_scripts' );
 
-/**
- * Implement the Custom Header feature.
- */
-//require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -226,8 +216,160 @@ require get_template_directory() . '/inc/jetpack.php';
  */
 require get_template_directory() . '/inc/post-types.php';
 
+/**
+ * Load vafpress framework
+ */
+require_once get_template_directory() . '/inc/vafpress/bootstrap.php';
+
 
 /**
  *Register Custom Navigation Walker
  */
 require_once get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
+
+/**
+ * Include Custom Data Sources
+ */
+require_once 'admin/data_sources.php';
+
+// options
+$tmpl_opt  = get_template_directory() . '/admin/option/option.php';
+
+/**
+ * Create instance of Options
+ */
+$theme_options = new VP_Option(array(
+	'is_dev_mode'           => false,                                  // dev mode, default to false
+	'option_key'            => 'ammarath_option',                           // options key in db, required
+	'page_slug'             => 'ammarath_option',                           // options page slug, required
+	'template'              => $tmpl_opt,                              // template file path or array, required
+	'menu_page'             => 'themes.php',                           // parent menu slug or supply `array` (can contains 'icon_url' & 'position') for top level menu
+	'use_auto_group_naming' => true,                                   // default to true
+	'use_util_menu'         => true,                                   // default to true, shows utility menu
+	'minimum_role'          => 'edit_theme_options',                   // default to 'edit_theme_options'
+	'layout'                => 'fixed',                                // fluid or fixed, default to fixed
+	'page_title'            => __( 'Theme Options', 'vp_textdomain' ), // page title
+	'menu_label'            => __( 'Theme Options', 'vp_textdomain' ), // menu label
+));
+
+
+/**
+* DEFINE METABOX TEMPLATES
+**/
+ $mb_about  = get_template_directory() . '/inc/vafpress/mb_about.php';
+ $mb_faq  = get_template_directory() . '/inc/vafpress/mb_faq.php';
+ $mb_services  = get_template_directory() . '/inc/vafpress/mb_services.php';
+ $mb_homepage  = get_template_directory() . '/inc/vafpress/mb_homepage.php';
+
+/**
+* CREATE THE META BOXES
+**/
+$mb1 = new VP_Metabox($mb_about);
+$mb2 = new VP_Metabox($mb_faq);
+$mb3 = new VP_Metabox($mb_services);
+$mb4 = new VP_Metabox($mb_homepage);
+
+/** SHORTCODES **/
+$tmpl_sg1  = get_template_directory() . '/inc/vafpress/shortcodes1.php';
+
+/**
+ * Create instances of Shortcode Generator
+ */
+$tmpl_sg1 = array(
+	'name'           => 'sg_1',                                        // unique name, required
+	'template'       => $tmpl_sg1,                                     // template file or array, required
+	'modal_title'    => __( 'Ammarath Shortcodes', 'vp_textdomain'), // modal title, default to empty string
+	'main_image'     => get_template_directory_uri() . '/inc/vafpress/public/img/vp_shortcode_icon.png',
+	'button_title'   => __( 'Ammarath Shortcodes', 'vp_textdomain'),              // button title, default to empty string
+	'types'          => array( 'post', 'page' ),                       // at what post types the generator should works, default to post and page
+	'included_pages' => array( 'appearance_page_vpt_option' ),         // or to what other admin pages it should appears
+);
+
+$sg1 = new VP_ShortcodeGenerator($tmpl_sg1);
+
+
+
+
+
+// column (grid) shortcode
+function ammarath_grid($atts,$content=null){
+   extract(shortcode_atts(array(
+      'col_lg' => 12,
+      'col_xs' => 12,
+      'offset_lg' => 0,
+      'offset_xs' => 0
+   ), $atts));
+    return '<div class="col-md-'.$col_lg. ' ' . 'col-xs-'.$col_xs. ' ' . 'col-md-offset-'.$offset_lg. ' ' . 'col-xs-offset-'.$offset_xs.'">'.$content.'</div>';
+}
+add_shortcode('grid', 'ammarath_grid');
+
+// Section shortcode
+function ammarath_section($atts){
+   extract(shortcode_atts(array(
+      'title' => '',
+      'section_content' => ''
+   ), $atts));
+    return '<div class="section-colored text-center"><div class="container"><div class="row"><div class="col-lg-12">
+    <h2>' . $title .'</h2>
+    <p>' .$section_content .'</p><hr>
+    </div></div> <!-- /.row --></div><!-- /.container --></div>';
+}
+add_shortcode('section', 'ammarath_section');
+
+// Call To Action shortcode
+function ammarath_action($atts){
+   extract(shortcode_atts(array(
+      'title' => '',
+      'section_content' => '',
+      'btn_text' => '',
+      'btn_link' => ''
+   ), $atts));
+    return '<div class="container">
+
+        <div class="row well">
+            <div class="col-lg-8 col-md-8">
+                <h4>' . $title . '</h4>
+                <p>' . $section_content . '</p>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <a class="btn btn-lg btn-primary pull-right" href="' . $btn_link . '">' . $btn_text . '</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>';
+}
+add_shortcode('call_to_action', 'ammarath_action');
+
+
+
+
+
+
+
+/****** DYNAMIC CSS ******/
+
+// hook into options after ajax saving
+add_action('vp_option_after_ajax_save-ammarath_option', 'ammarath_generate_dynamic_css', 10, 1);
+
+function ammarath_generate_dynamic_css( $option ) {
+    // write the dynamic css file
+    // you can use $option variable or access them using vp_option
+	$data = $option;	
+	$css_dir = get_template_directory() . '/css/'; // Shorten code, save 1 call
+	ob_start(); // Capture all output (output buffering)
+
+	require($css_dir . 'dynamic-css.php'); // Generate CSS
+
+	$css = ob_get_clean(); // Get generated CSS (output buffering)
+	file_put_contents($css_dir . 'dynamic-css.css', $css, LOCK_EX); // Save it
+
+}
+
+
+
+function ammarath_enqueue_dynamic_css() {
+wp_register_style('options', get_template_directory_uri() . '/css/dynamic-css.css', 'style');
+wp_enqueue_style( 'options');
+}
+add_action('wp_print_styles', 'ammarath_enqueue_dynamic_css');

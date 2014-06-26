@@ -36,8 +36,8 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 		
 		<?php /* Start the Loop */ ?>
-
-		<?php if ( of_get_option('blog_layout') == "one"): ?>
+		
+		<?php if (vp_option('ammarath_option.blog_layout') == "one"): ?>
 		<div class="col-lg-8">
 			<?php while ( have_posts() ) : the_post(); ?>
 			<?php get_template_part( 'inc/content', 'blog-1' ); ?>

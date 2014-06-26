@@ -1,135 +1,152 @@
 <?php /* Template name: Services */ 
 
 get_header( );
- ?>
+?>
 
- <!-- Page Content -->
+<!-- Page Content -->
 
-    <div class="container">
+<div class="container">
+ <?php  if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+    <div class="row">
 
-        <div class="row">
-
-            <div class="col-lg-12">
-                <h1 class="page-header"><?php the_title( ); ?>
-                    <small>What We Do</small>
-                </h1>
- <?php the_breadcrumb(); ?>
-            </div>
-
+        <div class="col-lg-12">
+            <h1 class="page-header"><?php the_title( ); ?>
+                <small>What We Do</small>
+            </h1>
+            <?php the_breadcrumb(); ?>
         </div>
-        <!-- /.row -->
-
-        <div class="row">
-
-            <div class="col-lg-12">
-                <img class="img-responsive" src="http://placehold.it/1200x300">
-            </div>
-
-        </div>
-        <!-- /.row -->
-
-        <!-- Service Paragraphs -->
-
-        <div class="row">
-
-            <div class="col-md-8">
-                <h2 class="page-header">Our Premium Services</h2>
-                <p>Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-            </div>
-
-            <div class="col-md-4">
-                <h2 class="page-header">Something More</h2>
-                <p>Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.</p>
-                <a class="btn btn-primary" href="#">Click Me!</a>
-            </div>
-
-        </div>
-        <!-- /.row -->
-
-        <!-- Service Tabs -->
-
-        <div class="row">
-
-            <div class="col-lg-12">
-                <h2 class="page-header">Tabbed Services</h2>
-                <ul id="myTab" class="nav nav-tabs">
-                    <li class="active"><a href="#service-one" data-toggle="tab">Service One</a>
-                    </li>
-                    <li><a href="#service-two" data-toggle="tab">Service Two</a>
-                    </li>
-                    <li><a href="#service-three" data-toggle="tab">Service Three</a>
-                    </li>
-                    <li><a href="#service-four" data-toggle="tab">Service Four</a>
-                    </li>
-                    <li><a href="#service-five" data-toggle="tab">Service Five</a>
-                    </li>
-                </ul>
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade in active" id="service-one">
-                        <i class="fa fa-gear pull-left fa-4x"></i>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam placerat nunc ut tellus tristique, non posuere neque iaculis. Fusce aliquet dui ut felis rhoncus, vitae molestie mauris auctor. Donec pellentesque feugiat leo a adipiscing. Pellentesque quis tristique eros, sed rutrum mauris.</p>
-                        <p>Nam fringilla quis enim in eleifend. Suspendisse sed lectus mauris. Nam commodo, arcu et posuere placerat, tellus tortor dignissim eros, sit amet eleifend urna lorem sit amet nulla. Praesent sem nibh, vulputate nec congue eu, dapibus vitae augue. Suspendisse cursus urna sit amet metus porttitor, in pharetra quam feugiat. Etiam tempus euismod nulla eget pellentesque.</p>
-                    </div>
-                    <div class="tab-pane fade" id="service-two">
-                        <i class="fa fa-gears pull-left fa-4x"></i>
-                        <p>Nam fringilla quis enim in eleifend. Suspendisse sed lectus mauris. Nam commodo, arcu et posuere placerat, tellus tortor dignissim eros, sit amet eleifend urna lorem sit amet nulla. Praesent sem nibh, vulputate nec congue eu, dapibus vitae augue. Suspendisse cursus urna sit amet metus porttitor, in pharetra quam feugiat. Etiam tempus euismod nulla eget pellentesque.</p>
-                        <p>Vestibulum laoreet molestie urna ac vehicula. Phasellus laoreet semper ipsum ac gravida. Sed in varius tortor. Nullam blandit in neque quis aliquet. Fusce volutpat pellentesque sem non convallis. Suspendisse sit amet magna pulvinar, gravida mauris eu, tincidunt massa. Nam lectus mi, viverra non quam nec, mollis malesuada dolor. Vivamus hendrerit nunc interdum turpis egestas, a lobortis odio consequat. Fusce posuere purus quis ligula faucibus lacinia. Curabitur sit amet congue dolor. Duis dapibus hendrerit nunc et gravida. Phasellus mollis, lectus quis ornare aliquam, arcu orci posuere lectus, vehicula bibendum sem ante quis lacus.</p>
-                    </div>
-                    <div class="tab-pane fade" id="service-three">
-                        <i class="fa fa-magic pull-left fa-4x"></i>
-                        <p>Vestibulum laoreet molestie urna ac vehicula. Phasellus laoreet semper ipsum ac gravida. Sed in varius tortor. Nullam blandit in neque quis aliquet. Fusce volutpat pellentesque sem non convallis. Suspendisse sit amet magna pulvinar, gravida mauris eu, tincidunt massa. Nam lectus mi, viverra non quam nec, mollis malesuada dolor. Vivamus hendrerit nunc interdum turpis egestas, a lobortis odio consequat. Fusce posuere purus quis ligula faucibus lacinia. Curabitur sit amet congue dolor. Duis dapibus hendrerit nunc et gravida. Phasellus mollis, lectus quis ornare aliquam, arcu orci posuere lectus, vehicula bibendum sem ante quis lacus.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam placerat nunc ut tellus tristique, non posuere neque iaculis. Fusce aliquet dui ut felis rhoncus, vitae molestie mauris auctor. Donec pellentesque feugiat leo a adipiscing. Pellentesque quis tristique eros, sed rutrum mauris.</p>
-                    </div>
-                    <div class="tab-pane fade" id="service-four">
-                        <i class="fa fa-flask pull-left fa-4x"></i>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam placerat nunc ut tellus tristique, non posuere neque iaculis. Fusce aliquet dui ut felis rhoncus, vitae molestie mauris auctor. Donec pellentesque feugiat leo a adipiscing. Pellentesque quis tristique eros, sed rutrum mauris.</p>
-                        <p>Nam fringilla quis enim in eleifend. Suspendisse sed lectus mauris. Nam commodo, arcu et posuere placerat, tellus tortor dignissim eros, sit amet eleifend urna lorem sit amet nulla. Praesent sem nibh, vulputate nec congue eu, dapibus vitae augue. Suspendisse cursus urna sit amet metus porttitor, in pharetra quam feugiat. Etiam tempus euismod nulla eget pellentesque.</p>
-                    </div>
-                    <div class="tab-pane fade" id="service-five">
-                        <i class="fa fa-flag pull-left fa-4x"></i>
-                        <p>Nam fringilla quis enim in eleifend. Suspendisse sed lectus mauris. Nam commodo, arcu et posuere placerat, tellus tortor dignissim eros, sit amet eleifend urna lorem sit amet nulla. Praesent sem nibh, vulputate nec congue eu, dapibus vitae augue. Suspendisse cursus urna sit amet metus porttitor, in pharetra quam feugiat. Etiam tempus euismod nulla eget pellentesque.</p>
-                        <p>Vestibulum laoreet molestie urna ac vehicula. Phasellus laoreet semper ipsum ac gravida. Sed in varius tortor. Nullam blandit in neque quis aliquet. Fusce volutpat pellentesque sem non convallis. Suspendisse sit amet magna pulvinar, gravida mauris eu, tincidunt massa. Nam lectus mi, viverra non quam nec, mollis malesuada dolor. Vivamus hendrerit nunc interdum turpis egestas, a lobortis odio consequat. Fusce posuere purus quis ligula faucibus lacinia. Curabitur sit amet congue dolor. Duis dapibus hendrerit nunc et gravida. Phasellus mollis, lectus quis ornare aliquam, arcu orci posuere lectus, vehicula bibendum sem ante quis lacus.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!-- /.row -->
-
-        <!-- Service Images -->
-
-        <div class="row">
-
-            <div class="col-lg-12">
-                <h2 class="page-header">Service Images</h2>
-            </div>
-
-            <div class="col-sm-4">
-                <img class="img-responsive" src="http://placehold.it/750x450">
-                <h3>Service One</h3>
-                <p>Service one description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst.</p>
-                <a class="btn btn-link btn-sm pull-right">More <i class="fa fa-angle-right"></i></a>
-            </div>
-
-            <div class="col-sm-4">
-                <img class="img-responsive" src="http://placehold.it/750x450">
-                <h3>Service Two</h3>
-                <p>Service two description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst.</p>
-                <a class="btn btn-link btn-sm pull-right">More <i class="fa fa-angle-right"></i></a>
-            </div>
-
-            <div class="col-sm-4">
-                <img class="img-responsive" src="http://placehold.it/750x450">
-                <h3>Service Three</h3>
-                <p>Service three description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst.</p>
-                <a class="btn btn-link btn-sm pull-right">More <i class="fa fa-angle-right"></i></a>
-            </div>
-
-        </div>
-        <!-- /.row -->
 
     </div>
-    <!-- /.container -->
+    <!-- /.row -->
+
+    <div class="row">
+
+        <div class="col-lg-12">
+          <?php the_post_thumbnail('full' , array('class' => 'img-responsive')); ?>
+      </div>
+
+  </div>
+  <!-- /.row -->
+
+      <div class="row">
+
+<?php if (vp_metabox('services.use_services_layout') == 0): ?> 
+
+     <div class="col-lg-12">
+    <?php the_content( ); ?>
+    </div>
+<?php else: ?>
+
+  </div>
+  <!-- /.row -->
 
 
- <?php get_footer( ); ?>
+
+  <!-- Service Paragraphs -->
+ 
+  <div class="row">
+
+
+
+
+    <div class="col-md-8">
+
+        <h2 class="page-header"><?php echo vp_metabox('services.service_blocks.0.block_1_title'); ?></h2>
+        <p><?php echo vp_metabox('services.service_blocks.0.block_1_content'); ?></p>
+    </div>
+
+    <div class="col-md-4">
+        <h2 class="page-header"><?php echo vp_metabox('services.service_blocks.0.block_2_title'); ?></h2>
+        <p><?php echo vp_metabox('services.service_blocks.0.block_2_content'); ?></p>
+        <a class="btn btn-primary" href="#">Click Me!</a>
+    </div>
+
+</div>
+<!-- /.row -->
+
+<!-- Service Tabs -->
+
+<div class="row">
+
+
+    <?php 
+    $services_tabs = vp_metabox('services.services_tabs');
+    ?>
+
+    <div class="col-lg-12">
+        <h2 class="page-header">Tabbed Services</h2>
+        <ul id="myTab" class="nav nav-tabs">
+          <?php foreach ($services_tabs as $tab) : ?>
+          <?php $tab_title = $tab['tab_title']; 
+          $tab_id = str_replace(' ', '', $tab_title); 
+          ?>
+          <li><a href="#<?php echo $tab_id; ?>" data-toggle="tab"><?php echo $tab['tab_title']; ?></a>
+          </li>
+      <?php endforeach; ?>
+  </ul>
+
+  <div id="myTabContent" class="tab-content">
+   <?php $i=1; ?>
+   <?php foreach ($services_tabs as $tab) : ?>
+   <?php $tab_title = $tab['tab_title']; 
+   $tab_id = str_replace(' ', '', $tab_title); 
+   ?>
+   <?php if ($i==1): ?>
+   <div class="tab-pane fade in active" id="<?php echo $tab_id; ?>">
+   <?php else: ?>
+   <div class="tab-pane fade in" id="<?php echo $tab_id; ?>">
+   <?php endif; ?>
+   <i class="<?php echo $tab['fa_tab']; ?> fa pull-left fa-4x"></i>
+   <p><?php echo $tab['tab_content'] ?></p>
+</div>
+<?php $i++ ?>
+<?php endforeach; ?>
+</div>
+
+
+</div>
+
+
+</div>
+<!-- /.row -->
+
+<!-- Service Images -->
+
+<div class="row">
+
+    <div class="col-lg-12">
+        <h2 class="page-header">Service Images</h2>
+    </div>
+
+    <div class="col-sm-4">
+        <img class="img-responsive" src="http://placehold.it/750x450">
+        <h3>Service One</h3>
+        <p>Service one description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst.</p>
+        <a class="btn btn-link btn-sm pull-right">More <i class="fa fa-angle-right"></i></a>
+    </div>
+
+    <div class="col-sm-4">
+        <img class="img-responsive" src="http://placehold.it/750x450">
+        <h3>Service Two</h3>
+        <p>Service two description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst.</p>
+        <a class="btn btn-link btn-sm pull-right">More <i class="fa fa-angle-right"></i></a>
+    </div>
+
+    <div class="col-sm-4">
+        <img class="img-responsive" src="http://placehold.it/750x450">
+        <h3>Service Three</h3>
+        <p>Service three description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst.</p>
+        <a class="btn btn-link btn-sm pull-right">More <i class="fa fa-angle-right"></i></a>
+    </div>
+
+
+</div>
+<!-- /.row -->
+<?php endif; ?>
+  <?php endwhile; endif; ?>
+
+</div>
+<!-- /.container -->
+
+
+<?php get_footer( ); ?>
