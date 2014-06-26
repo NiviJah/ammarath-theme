@@ -1,5 +1,5 @@
-- [ ] a task list item
-- [ ] list syntax required
-- [ ] normal **formatting**, @mentions, #1234 refs
-- [ ] incomplete
-- [x] completed
+- [ ] Template Files OOP
+- [ ] Home Page Metaboxes
+- [ ] diffrent class for colored section
+- [ ] new stylish panel HTML 
+- [ ] stylish panel page template for services / hompage projects + theme options chooser
