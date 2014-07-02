@@ -40,7 +40,7 @@ get_header(); ?>
 		<?php if (vp_option('ammarath_option.blog_layout') == "one"): ?>
 		<div class="col-lg-8">
 			<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'inc/content', 'blog-1' ); ?>
+			<?php get_template_part( 'inc//templates/content', 'blog-1' ); ?>
 		<?php endwhile; ?>
 
 		<?php ammarath_paging_nav(); ?>
@@ -54,7 +54,7 @@ get_header(); ?>
 <?php else: ?>
 	<div class="col-lg-12">
 		<?php while ( have_posts() ) : the_post(); ?>
-		<?php get_template_part( 'inc/content', 'blog-2' ); ?>
+		<?php get_template_part( 'inc/templates/content', 'blog-2' ); ?>
 	<?php endwhile; ?>
 
 	<?php ammarath_paging_nav(); ?>

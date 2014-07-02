@@ -29,9 +29,9 @@ get_header( );
 
         </div>
         <!-- Our Team -->
-        <?php get_template_part( '/inc/our-team'); ?>
+        <?php get_template_part( '/inc//templates/our-team'); ?>
         <!-- Our Customers -->
-        <?php get_template_part( '/inc/our-customers'); ?>
+        <?php get_template_part( '/inc/templates/our-customers'); ?>
 
         
 

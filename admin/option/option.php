@@ -150,7 +150,7 @@ array(
 			'icon' => 'font-awesome:fa-magic',
 			'menus' => array(
 				array(
-					'title' => __('Regular', 'vp_textdomain'),
+					'title' => __('Slider', 'vp_textdomain'),
 					'name' => 'submenu_1',
 					'icon' => 'font-awesome:fa-th-large',
 					'controls' => array(
@@ -211,158 +211,87 @@ array(
 
 								),
 							),
-array(
-	'type' => 'textarea',
-	'name' => 'ta_1',
-	'label' => __('Textarea', 'vp_textdomain'),
-	'description' => __('Everytime you need long text..', 'vp_textdomain'),
-	'default' => 'lorem ipsum',
-	),
-array(
-	'type' => 'section',
-	'name' => 'section_2',
-	'title' => __('Multiple Choices', 'vp_textdomain'),
-	'description' => __('Controls with multiple specified options.', 'vp_textdomain'),
-	'fields' => array(
-		array(
-			'type' => 'checkbox',
-			'name' => 'cb_1',
-			'label' => __('CheckBox with Min and Max Selected Validation', 'vp_textdomain'),
-			'description' => __('Minimum selected of 2 items and maximum selected of 2 items, in other words need to choose exactly 2 items.', 'vp_textdomain'),
-			'validation' => 'minselected[2]|maxselected[2]',
-			'items' => array(
-				array(
-					'value' => 'value_1',
-					'label' => __('Label 1', 'vp_textdomain'),
-					),
-				array(
-					'value' => 'value_2',
-					'label' => __('Label 2', 'vp_textdomain'),
-					),
-				array(
-					'value' => 'value_3',
-					'label' => __('Label 3', 'vp_textdomain'),
-					),
-				),
-			'default' => array(
-				'value_1',
-				),
-			),
-		array(
-			'type' => 'checkbox',
-			'name' => 'cb_2',
-			'label' => __('CheckBox with Required Validation', 'vp_textdomain'),
-			'description' => __('Required to choose anything.', 'vp_textdomain'),
-			'validation' => 'required',
-			'default' => '',
-			'items' => array(
-				array(
-					'value' => 'value_1',
-					'label' => __('Label 1', 'vp_textdomain'),
-					),
-				array(
-					'value' => 'value_2',
-					'label' => __('Label 2', 'vp_textdomain'),
-					),
-				array(
-					'value' => 'value_3',
-					'label' => __('Label 3', 'vp_textdomain'),
-					),
-				),
-			),
-		array(
-			'type' => 'radiobutton',
-			'name' => 'rb_1',
-			'label' => __('RadioButton', 'vp_textdomain'),
-			'items' => array(
-				array(
-					'value' => 'value_1',
-					'label' => __('Label 1', 'vp_textdomain'),
-					),
-				array(
-					'value' => 'value_2',
-					'label' => __('Label 2', 'vp_textdomain'),
-					),
-				array(
-					'value' => 'value_3',
-					'label' => __('Label 3', 'vp_textdomain'),
-					),
-				),
-			'default' => array(
-				'value_3',
-				),
-			),
-		array(
-			'type' => 'select',
-			'name' => 'ss_1',
-			'label' => __('Single Select Box', 'vp_textdomain'),
-			'items' => array(
-				array(
-					'value' => 'value_1',
-					'label' => __('Label 1', 'vp_textdomain'),
-					),
-				array(
-					'value' => 'value_2',
-					'label' => __('Label 2', 'vp_textdomain'),
-					),
-				array(
-					'value' => 'value_3',
-					'label' => __('Label 3', 'vp_textdomain'),
-					),
-				),
-			'default' => array(
-				'value_3',
-				),
-			),
-		array(
-			'type' => 'select',
-			'name' => 'ss_2',
-			'label' => __('Select Box with Get Categories Data Source', 'vp_textdomain'),
-			'items' => array(
-				'data' => array(
-					array(
-						'source' => 'function',
-						'value' => 'vp_get_categories',
-						),
-					),
-				),
-			'default' => array(
-				'{{last}}',
-				),
-			),
-		array(
-			'type' => 'multiselect',
-			'name' => 'ms_1',
-			'label' => __('Multiple Select Box', 'vp_textdomain'),
-			'description' => __('Minimum selected of 2 items and maximum selected of 3 items.', 'vp_textdomain'),
-			'validation' => 'minselected[2]|maxselected[3]',
-			'items' => array(
-				array(
-					'value' => 'value_1',
-					'label' => __('Label 1', 'vp_textdomain'),
-					),
-				array(
-					'value' => 'value_2',
-					'label' => __('Label 2', 'vp_textdomain'),
-					),
-				array(
-					'value' => 'value_3',
-					'label' => __('Label 3', 'vp_textdomain'),
-					),
-				array(
-					'value' => 'value_4',
-					'label' => __('Label 4', 'vp_textdomain'),
-					),
-				),
-			'default' => array(
-				'{{first}}',
-				'{{last}}',
-				),
-			),
-		),
+
 ),
 ),
+				array(
+					'title' => __('Layout options', 'vp_textdomain'),
+					'name' => 'homepage_layouts_submenu_1',
+					'icon' => 'font-awesome:fa-th-large',
+					'controls' => array(
+						array(
+							'type' => 'section',
+							'title' => __('Layout options', 'vp_textdomain'),
+							'name' => 'sliders',
+							'description' => __('TextBox and TextArea Showcase', 'vp_textdomain'),
+							'fields' => array(
+ array(
+        'type' => 'radiobutton',
+        'name' => 'portfolio_layout',
+        'label' => __('Choose Portfolio Layout', 'vp_textdomain'),
+        'items' => array(
+            array(
+                'value' => 'portfolio_layout_1',
+                'label' => __('Portfolio Layout 1', 'vp_textdomain'),
+            ),
+            array(
+                'value' => 'portfolio_layout_2',
+                'label' => __('Portfolio Layout 2', 'vp_textdomain'),
+            ),
+        ),
+        'default' => array(
+            'portfolio_layout_2',
+        ),
+    ),
+
+												array(
+					'type' => 'wpeditor',
+					'name' => 'slider_1_html',
+					'label' => __('WP TinyMCE Editor', 'vp_textdomain'),
+					'description' => __('Wordpress tinyMCE editor.', 'vp_textdomain'),
+					'use_external_plugins' => '1',
+					'disabled_externals_plugins' => '',
+					'disabled_internals_plugins' => '',
+					),
+								array(
+									'type' => 'upload',
+									'name' => 'slider_2',
+									'label' => __('Upload', 'vp_textdomain'),
+									'description' => __('Media uploader, using the powerful WP Media Upload', 'vp_textdomain'),
+									'default' => 'http://placehold.it/1900x1080',
+									),
+												array(
+					'type' => 'wpeditor',
+					'name' => 'slider_2_html',
+					'label' => __('WP TinyMCE Editor', 'vp_textdomain'),
+					'description' => __('Wordpress tinyMCE editor.', 'vp_textdomain'),
+					'use_external_plugins' => '1',
+					'disabled_externals_plugins' => '',
+					'disabled_internals_plugins' => '',
+					),
+								array(
+									'type' => 'upload',
+									'name' => 'slider_3',
+									'label' => __('Upload', 'vp_textdomain'),
+									'description' => __('Media uploader, using the powerful WP Media Upload', 'vp_textdomain'),
+									'default' => 'http://placehold.it/1900x1080',
+									),
+												array(
+					'type' => 'wpeditor',
+					'name' => 'slider_3_html',
+					'label' => __('WP TinyMCE Editor', 'vp_textdomain'),
+					'description' => __('Wordpress tinyMCE editor.', 'vp_textdomain'),
+					'use_external_plugins' => '1',
+					'disabled_externals_plugins' => '',
+					'disabled_internals_plugins' => '',
+					),
+
+								),
+							),
+
 ),
+),
+
 array(
 	'title' => __('Layouts', 'vp_textdomain'),
 	'name' => 'submenu_2',
